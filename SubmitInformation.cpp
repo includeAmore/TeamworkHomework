@@ -129,40 +129,7 @@ string TimeStamp_Convert(uint64_t time)
     res = _year + ":" + _month + ":" + _day + ":" + _hour;
     return res;
 }
-void setTimeNow()
-{
-    cout << "输入时间戳请按1，输入时间请按2:";
-    cin.clear();
-    uint64_t timeStampNow;
-    bool flag = false;
-    int n;
-    while (true)
-    {
-        cin >> n;
-        cin.clear();
-        switch (n)
-        {
-            case 1:
-                cout << "请输入当前时间戳：";
-                cin >> timeStampNow;
-                setTimeNow(::timeNow, timeStampNow);
-                flag = true;
-                break;
-            case 2:
-                cout << "请输入当前时间（输入样例：1970.1.1.8）：";
-                getline(cin, ::timeNow);
-                setTimeNow(::timeNow, timeStampNow);
-                flag = true;
-                break;
-            default:
-                cout << "\n输入错误！请重新输入：";
-                cin.clear();
-                break;
-        }
-        if (flag)
-            break;
-    }
-}
+
 uint64_t setTimePCR(string &timeNow)
 {
     int year, month, day, hour;
