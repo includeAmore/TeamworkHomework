@@ -9,6 +9,7 @@ extern string timeNow;   //目前时间
 extern int timeStampNow; //当前的时间戳
 int main()
 {
+    getTimeNow();
     cout << "教师登录请按 1；学生登录请按 2" << endl;
     cout << "请输入：";
     int r;
