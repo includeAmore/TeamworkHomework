@@ -237,7 +237,7 @@ void setTimeNow(string &timeNow, uint64_t timeStampN) //设置当前时间函数
     hour = hour - 8;
     timeStampN += dayInternal * 24 + hour;
     timeStampNow = timeStampN;
-    cout << "\n设置成功！当前时间为：" << timeNow << "，当前时间戳为（单位：小时）：" << timeStampN<<endl;
+    cout << "\n当前时间为：" << timeNow << "，当前时间戳为（单位：小时）：" << timeStampN<<endl;
 }
 
 void classSearchPCR(Student *head)
