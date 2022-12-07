@@ -5,108 +5,110 @@
 #include <string>
 #include <sstream>
 #include <stdlib.h>
+#include<windows.h>
+#include<stdio.h>
 using std::string;
 using namespace std;
 
-//Àà£ºÑ§Éú
+//ç±»ï¼šå­¦ç”Ÿ
 struct Student
 {
     struct information
     {
-        string name = "ÔİÎŞÊı¾İ";        //ĞÕÃû
-        string id = "ÔİÎŞÊı¾İ";          //Ñ§ºÅ
-        string telephone = "ÔİÎŞÊı¾İ";   //µç»°
-        string school = "ÔİÎŞÊı¾İ";      //Ñ§Ôº
-        string address = "ÔİÎŞÊı¾İ";     //ÇŞÊÒÂ¥¶°
-        string classnum = "ÔİÎŞÊı¾İ";    //°à¼¶ºÅ
-        string temperature = "ÔİÎŞÊı¾İ"; //ÌåÎÂ
-        string vaccine = "ÔİÎŞÊı¾İ";     //ÒßÃç×¢ÉäÇé¿ö
-        struct PCR          //ºËËá¼ì²âÇé¿ö
+        string name = "æš‚æ— æ•°æ®";        //å§“å
+        string id = "æš‚æ— æ•°æ®";          //å­¦å·
+        string telephone = "æš‚æ— æ•°æ®";   //ç”µè¯
+        string school = "æš‚æ— æ•°æ®";      //å­¦é™¢
+        string address = "æš‚æ— æ•°æ®";     //å¯å®¤æ¥¼æ ‹
+        string classnum = "æš‚æ— æ•°æ®";    //ç­çº§å·
+        string temperature = "æš‚æ— æ•°æ®"; //ä½“æ¸©
+        string vaccine = "æš‚æ— æ•°æ®";     //ç–«è‹—æ³¨å°„æƒ…å†µ
+        struct PCR          //æ ¸é…¸æ£€æµ‹æƒ…å†µ
         {
-            string date = "ÔİÎŞÊı¾İ";        //×î½üÒ»´ÎºËËá¼ì²âÈÕÆÚ
-            string consequence = "ÔİÎŞÊı¾İ"; //×î½üÒ»´ÎºËËá¼ì²â½á¹û
+            string date = "æš‚æ— æ•°æ®";        //æœ€è¿‘ä¸€æ¬¡æ ¸é…¸æ£€æµ‹æ—¥æœŸ
+            string consequence = "æš‚æ— æ•°æ®"; //æœ€è¿‘ä¸€æ¬¡æ ¸é…¸æ£€æµ‹ç»“æœ
             uint64_t timeStamp;
         } PCR;
-        struct Apply //³öĞ£ÉêÇëÇé¿ö
+        struct Apply //å‡ºæ ¡ç”³è¯·æƒ…å†µ
         {
-            bool state = false; //ÊÇ·ñÉêÇë
-            bool check = false; //ÊÇ·ñÉóÅú
+            bool state = false; //æ˜¯å¦ç”³è¯·
+            bool check = false; //æ˜¯å¦å®¡æ‰¹
             string type;        // applyforin applyforout applyforinandout
             bool approval = false;
-            string Indate = "ÔİÎŞÊı¾İ";
-            string Outdate = "ÔİÎŞÊı¾İ";
-            string reason = "ÔİÎŞÊı¾İ";
-            string campus = "ÔİÎŞÊı¾İ";
+            string Indate = "æš‚æ— æ•°æ®";
+            string Outdate = "æš‚æ— æ•°æ®";
+            string reason = "æš‚æ— æ•°æ®";
+            string campus = "æš‚æ— æ•°æ®";
         } Apply;
     } information;
     Student *next;
 };
 
-//Àà£ºËŞÉáÂ¥
+//ç±»ï¼šå®¿èˆæ¥¼
 struct Dorm
 {
     struct information
     {
-        string name = "ÔİÎŞÊı¾İ";     //Â¥Ãû
-        string district = "ÔİÎŞÊı¾İ"; //Çø
-        string capacity = "ÔİÎŞÊı¾İ"; //ÈİÁ¿
-        string chief = "ÔİÎŞÊı¾İ";    //Â¥³¤
+        string name = "æš‚æ— æ•°æ®";     //æ¥¼å
+        string district = "æš‚æ— æ•°æ®"; //åŒº
+        string capacity = "æš‚æ— æ•°æ®"; //å®¹é‡
+        string chief = "æš‚æ— æ•°æ®";    //æ¥¼é•¿
     } information;
     Dorm *next;
 };
 
-class Util //ĞÅÏ¢ÇĞ·Ö¹¤¾ß
+class Util //ä¿¡æ¯åˆ‡åˆ†å·¥å…·
 {
-    // ËùĞèÍ·ÎÄ¼ş  <sstream>  <vector>  <string>
+    // æ‰€éœ€å¤´æ–‡ä»¶  <sstream>  <vector>  <string>
 public:
-    // º¯ÊıÒÔµ¥¸öchar×Ö·û×÷Îª·Ö¸ô·û¶Ôstring×Ö·û´®½øĞĞ·Ö¸î£¬ ²¢½«·Ö¸î½á¹û´æÈëvectorÖĞ£¬×îÖÕ·µ»Øvector<string>
+    // å‡½æ•°ä»¥å•ä¸ªcharå­—ç¬¦ä½œä¸ºåˆ†éš”ç¬¦å¯¹stringå­—ç¬¦ä¸²è¿›è¡Œåˆ†å‰²ï¼Œ å¹¶å°†åˆ†å‰²ç»“æœå­˜å…¥vectorä¸­ï¼Œæœ€ç»ˆè¿”å›vector<string>
     static std::vector<string> split(const std::string &s, char delimiter)
-    {                                      //  n.	¶¨½ç·û£¬·Ö¸ô·û;
-        std::vector<string> tokens;        // ´æ·Å½á¹û
-        std::string token;                 // ×Ó´®
-        std::istringstream tokenStream(s); //Ê¹ÓÃstring s³õÊ¼»¯ÊäÈëÁ÷, ±ê×¼¿âÍ·ÎÄ¼ş <sstream>
+    {                                      //  n.	å®šç•Œç¬¦ï¼Œåˆ†éš”ç¬¦;
+        std::vector<string> tokens;        // å­˜æ”¾ç»“æœ
+        std::string token;                 // å­ä¸²
+        std::istringstream tokenStream(s); //ä½¿ç”¨string såˆå§‹åŒ–è¾“å…¥æµ, æ ‡å‡†åº“å¤´æ–‡ä»¶ <sstream>
         while (std::getline(tokenStream, token,
                             delimiter))
-        {                       //  ¶ÔÓÚÊäÈëÁ÷£¬Óöµ½charµÄdelimiterÊ± ¾ÍÍ£Ö¹ °Ñ½á¹û´¢´æÔÚtokenÖĞ, (Í¬Ê±ÉáÆúÓöµ½µÄÕâ¸öchar), ¶¨ÒåÓÚ<string>
-            if (!token.empty()) //ÒòÎª»áÓöµ½Á¬ĞøµÄdelimiterµÄÇé¿ö£¬ÕâÊ±ºòtoken¾ÍÊÇ¿Õ£¬ÕâÖÖÇé¿ö²»Òª·ÅÈëtokensµ±ÖĞ
+        {                       //  å¯¹äºè¾“å…¥æµï¼Œé‡åˆ°charçš„delimiteræ—¶ å°±åœæ­¢ æŠŠç»“æœå‚¨å­˜åœ¨tokenä¸­, (åŒæ—¶èˆå¼ƒé‡åˆ°çš„è¿™ä¸ªchar), å®šä¹‰äº<string>
+            if (!token.empty()) //å› ä¸ºä¼šé‡åˆ°è¿ç»­çš„delimiterçš„æƒ…å†µï¼Œè¿™æ—¶å€™tokenå°±æ˜¯ç©ºï¼Œè¿™ç§æƒ…å†µä¸è¦æ”¾å…¥tokenså½“ä¸­
                 tokens.push_back(token);
         }
         return tokens;
     }
 
-    // º¯ÊıÒÔstring×÷Îª·Ö¸ô·û¶Ôstring×Ö·û´®½øĞĞ·Ö¸î£¬ ²¢½«·Ö¸î½á¹û´æÈëvectorÖĞ£¬×îÖÕ·µ»Øvector<string>
+    // å‡½æ•°ä»¥stringä½œä¸ºåˆ†éš”ç¬¦å¯¹stringå­—ç¬¦ä¸²è¿›è¡Œåˆ†å‰²ï¼Œ å¹¶å°†åˆ†å‰²ç»“æœå­˜å…¥vectorä¸­ï¼Œæœ€ç»ˆè¿”å›vector<string>
     static std::vector<string> split(const std::string &s, const std::string &delimiter)
-    {                                                                               //  n.	¶¨½ç·û£¬·Ö¸ô·û;
-        std::vector<string> tokens;                                                 // ´æ·Å½á¹û
-        std::string token;                                                          // ×Ó´®
-        int i = 0, start = 0, sSize = (int)s.size(), dSize = (int)delimiter.size(); // startÎª×Ö·û×Ó´®µÄÆğÊ¼Î»ÖÃ
+    {                                                                               //  n.	å®šç•Œç¬¦ï¼Œåˆ†éš”ç¬¦;
+        std::vector<string> tokens;                                                 // å­˜æ”¾ç»“æœ
+        std::string token;                                                          // å­ä¸²
+        int i = 0, start = 0, sSize = (int)s.size(), dSize = (int)delimiter.size(); // startä¸ºå­—ç¬¦å­ä¸²çš„èµ·å§‹ä½ç½®
         while (i < sSize)
         {
             if (isDelimiter2(s, i, delimiter))
-            {                                       // ´Ë´¦Ò²¿ÉÒÔÊ¹ÓÃisDelimiter(s, i, delimiter)  Èç¹ûÓöµ½ÁË·Ö¸ô·û
-                token = s.substr(start, i - start); // ·Ö¸î×Ö·û´®
+            {                                       // æ­¤å¤„ä¹Ÿå¯ä»¥ä½¿ç”¨isDelimiter(s, i, delimiter)  å¦‚æœé‡åˆ°äº†åˆ†éš”ç¬¦
+                token = s.substr(start, i - start); // åˆ†å‰²å­—ç¬¦ä¸²
                 if (!token.empty())
-                { // ÒòÎª»áÓöµ½Á¬ĞøµÄdelimiterµÄÇé¿ö£¬ÕâÊ±ºòtoken¾ÍÊÇ¿Õ£¬ÕâÖÖÇé¿ö²»Òª·ÅÈëtokensµ±ÖĞ
+                { // å› ä¸ºä¼šé‡åˆ°è¿ç»­çš„delimiterçš„æƒ…å†µï¼Œè¿™æ—¶å€™tokenå°±æ˜¯ç©ºï¼Œè¿™ç§æƒ…å†µä¸è¦æ”¾å…¥tokenså½“ä¸­
                     tokens.push_back(token);
                 }
-                i += dSize; // Ìø¹ı·Ö¸ô·ûµÄ³¤¶È
-                start = i;  // ¸üĞÂ×Ó´®µÄÆğÊ¼Î»ÖÃ
+                i += dSize; // è·³è¿‡åˆ†éš”ç¬¦çš„é•¿åº¦
+                start = i;  // æ›´æ–°å­ä¸²çš„èµ·å§‹ä½ç½®
             }
             else
             {
                 i++;
             }
         }
-        token = s.substr(start, i - start); // ·Ö¸î×Ö·û´®
+        token = s.substr(start, i - start); // åˆ†å‰²å­—ç¬¦ä¸²
         if (!token.empty())
-        { //ÒòÎª»áÓöµ½Á¬ĞøµÄdelimiterµÄÇé¿ö£¬ÕâÊ±ºòtoken¾ÍÊÇ¿Õ£¬ÕâÖÖÇé¿ö²»Òª·ÅÈëtokensµ±ÖĞ
+        { //å› ä¸ºä¼šé‡åˆ°è¿ç»­çš„delimiterçš„æƒ…å†µï¼Œè¿™æ—¶å€™tokenå°±æ˜¯ç©ºï¼Œè¿™ç§æƒ…å†µä¸è¦æ”¾å…¥tokenså½“ä¸­
             tokens.push_back(token);
         }
         return tokens;
     }
 
 private:
-    // º¯ÊıÅĞ¶Ï×Ö·û´®s´ÓÏÂ±êi¿ªÊ¼µÄ£¬³¤ÎªdelimiterµÄ×Ö·û×Ó´®ÊÇ·ñºÍdelimiterÈ«µÈ
+    // å‡½æ•°åˆ¤æ–­å­—ç¬¦ä¸²sä»ä¸‹æ ‡iå¼€å§‹çš„ï¼Œé•¿ä¸ºdelimiterçš„å­—ç¬¦å­ä¸²æ˜¯å¦å’Œdelimiterå…¨ç­‰
     static bool isDelimiter(const std::string &s, int i, const std::string &delimiter)
     {
         int j = 0, sSize = (int)s.size(), dSize = (int)delimiter.size();
@@ -125,7 +127,7 @@ private:
         return j == dSize;
     }
 
-    // º¯ÊıÅĞ¶Ï×Ö·û´®s´ÓÏÂ±êi¿ªÊ¼µÄ£¬³¤ÎªdelimiterµÄ×Ö·û×Ó´®ÊÇ·ñºÍdelimiterÈ«µÈ
+    // å‡½æ•°åˆ¤æ–­å­—ç¬¦ä¸²sä»ä¸‹æ ‡iå¼€å§‹çš„ï¼Œé•¿ä¸ºdelimiterçš„å­—ç¬¦å­ä¸²æ˜¯å¦å’Œdelimiterå…¨ç­‰
     static bool isDelimiter2(const std::string &s, int i, const std::string &delimiter)
     {
 
@@ -133,10 +135,10 @@ private:
     }
 };
 
-//Çå¿ÕÊäÈë»º³åÇø
+//æ¸…ç©ºè¾“å…¥ç¼“å†²åŒº
 void clean();
 
-//ĞÅÏ¢µ¼ÈëÄ£¿é
+//ä¿¡æ¯å¯¼å…¥æ¨¡å—
 void help();
 void helpofinput();
 void helpofstudentinput();
@@ -146,17 +148,18 @@ void inputPCR();
 void helpofdorminput();
 void inputinformationofdorm();
 
-//µÚ¶ş²¿·Ö
+//ç¬¬äºŒéƒ¨åˆ†
 void helpofsubmit();
 void searchforstu(Student *);
 void classSearchPCR(Student *);
 void dormSearchPCR(Student *);
 void SearchExpire(Student *);
-void setTimeNow(string &timeNow, uint64_t timeStampN); //ÉèÖÃÊ±¼ä
+void setTimeNow(string &timeNow, uint64_t timeStampN); //è®¾ç½®æ—¶é—´
 void setTimeNow();
 ::uint64_t setTimePCR(string &);
+void getTimeNow();
 
-//µÚÈı²¿·Ö£º½ø³öĞ£ÉóÅú
+//ç¬¬ä¸‰éƒ¨åˆ†ï¼šè¿›å‡ºæ ¡å®¡æ‰¹
 void inandout(Student *head);
 void helpforstu();
 void searchforper(Student *head);
