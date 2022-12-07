@@ -1,6 +1,6 @@
 #include "CM.h"
-extern string timeNow = "000"; //Ä¿Ç°Ê±¼ä
-extern int timeStampNow = 0;   //µ±Ç°µÄÊ±¼ä´Á
+extern string timeNow = "000"; //ç›®å‰æ—¶é—´
+extern int timeStampNow = 0;   //å½“å‰çš„æ—¶é—´æˆ³
 extern int NumofStudents;
 int CheckLeapYear(int beginYear, int internal)
 {
@@ -19,7 +19,7 @@ int CheckLeapYear(int beginYear, int internal)
 }
 string TimeStamp_Convert(uint64_t time)
 {
-    //Ê±¼ä´Á×ª»»µ±Ç°ÄêÔÂÈÕ    ¸ñÁÖÍşÖÎÊ±¼ä£º1970-1-1 8:00
+    //æ—¶é—´æˆ³è½¬æ¢å½“å‰å¹´æœˆæ—¥    æ ¼æ—å¨æ²»æ—¶é—´ï¼š1970-1-1 8:00
     stringstream stream;
     string _year;
     string _month;
@@ -33,28 +33,28 @@ string TimeStamp_Convert(uint64_t time)
     int hourCount = 0;
 
     int gap = 8;
-    int DayInternal = 24;                       //Ò»Ìì
-    int CommonYearInternal = DayInternal * 365; //Æ½Äê
-    int LeapYearInternal = DayInternal * 366;   //ÈòÄê
+    int DayInternal = 24;                       //ä¸€å¤©
+    int CommonYearInternal = DayInternal * 365; //å¹³å¹´
+    int LeapYearInternal = DayInternal * 366;   //é—°å¹´
 
     vector<int> VecMonth =
-        {0,
-         DayInternal * 31,
-         DayInternal * (31 + 28),
-         DayInternal * (31 + 28 + 31),
-         DayInternal * (31 + 28 + 31 + 30),
-         DayInternal * (31 + 28 + 31 + 30 + 31),
-         DayInternal * (31 + 28 + 31 + 30 + 31 + 30),
-         DayInternal * (31 + 28 + 31 + 30 + 31 + 30 + 31),
-         DayInternal * (31 + 28 + 31 + 30 + 31 + 30 + 31 + 31),
-         DayInternal * (31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30),
-         DayInternal * (31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31),
-         DayInternal * (31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30),
-         DayInternal * (31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30 + 31)};
+            {0,
+             DayInternal * 31,
+             DayInternal * (31 + 28),
+             DayInternal * (31 + 28 + 31),
+             DayInternal * (31 + 28 + 31 + 30),
+             DayInternal * (31 + 28 + 31 + 30 + 31),
+             DayInternal * (31 + 28 + 31 + 30 + 31 + 30),
+             DayInternal * (31 + 28 + 31 + 30 + 31 + 30 + 31),
+             DayInternal * (31 + 28 + 31 + 30 + 31 + 30 + 31 + 31),
+             DayInternal * (31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30),
+             DayInternal * (31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31),
+             DayInternal * (31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30),
+             DayInternal * (31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30 + 31)};
 
     if (time < CommonYearInternal)
     {
-        // 1970ÄêÖ®ÄÚ
+        // 1970å¹´ä¹‹å†…
         yearCount = 0;
         for (size_t i = 1; i < VecMonth.size(); ++i)
         {
@@ -93,7 +93,7 @@ string TimeStamp_Convert(uint64_t time)
         time = time - (dayCount - 1) * DayInternal + 8;
 
         int leapyearCount = 0;
-        if (leapyearCount = CheckLeapYear(1970, yearCount)) //¼ì²âÄê·İÇø¼äÄÚÓĞÎŞÈòÄê
+        if (leapyearCount = CheckLeapYear(1970, yearCount)) //æ£€æµ‹å¹´ä»½åŒºé—´å†…æœ‰æ— é—°å¹´
         {
             dayCount -= leapyearCount;
         }
@@ -131,7 +131,7 @@ string TimeStamp_Convert(uint64_t time)
 }
 void setTimeNow()
 {
-    cout << "ÊäÈëÊ±¼ä´ÁÇë°´1£¬ÊäÈëÊ±¼äÇë°´2:";
+    cout << "è¾“å…¥æ—¶é—´æˆ³è¯·æŒ‰1ï¼Œè¾“å…¥æ—¶é—´è¯·æŒ‰2:";
     cin.clear();
     uint64_t timeStampNow;
     bool flag = false;
@@ -142,22 +142,22 @@ void setTimeNow()
         cin.clear();
         switch (n)
         {
-        case 1:
-            cout << "ÇëÊäÈëµ±Ç°Ê±¼ä´Á£º";
-            cin >> timeStampNow;
-            setTimeNow(::timeNow, timeStampNow);
-            flag = true;
-            break;
-        case 2:
-            cout << "ÇëÊäÈëµ±Ç°Ê±¼ä£¨ÊäÈëÑùÀı£º1970.1.1.8£©£º";
-            getline(cin, ::timeNow);
-            setTimeNow(::timeNow, timeStampNow);
-            flag = true;
-            break;
-        default:
-            cout << "\nÊäÈë´íÎó£¡ÇëÖØĞÂÊäÈë£º";
-            cin.clear();
-            break;
+            case 1:
+                cout << "è¯·è¾“å…¥å½“å‰æ—¶é—´æˆ³ï¼š";
+                cin >> timeStampNow;
+                setTimeNow(::timeNow, timeStampNow);
+                flag = true;
+                break;
+            case 2:
+                cout << "è¯·è¾“å…¥å½“å‰æ—¶é—´ï¼ˆè¾“å…¥æ ·ä¾‹ï¼š1970.1.1.8ï¼‰ï¼š";
+                getline(cin, ::timeNow);
+                setTimeNow(::timeNow, timeStampNow);
+                flag = true;
+                break;
+            default:
+                cout << "\nè¾“å…¥é”™è¯¯ï¼è¯·é‡æ–°è¾“å…¥ï¼š";
+                cin.clear();
+                break;
         }
         if (flag)
             break;
@@ -168,7 +168,7 @@ uint64_t setTimePCR(string &timeNow)
     int year, month, day, hour;
     string time;
     stringstream stream;
-    vector<string> splitSemicolon = Util::split(timeNow, "."); // ÒÔÓ¢ÎÄ·ÖºÅÎª·Ö¸ô·û½øĞĞ¶Ô×Ö·û´®½øĞĞ·Ö¸î
+    vector<string> splitSemicolon = Util::split(timeNow, "."); // ä»¥è‹±æ–‡åˆ†å·ä¸ºåˆ†éš”ç¬¦è¿›è¡Œå¯¹å­—ç¬¦ä¸²è¿›è¡Œåˆ†å‰²
     stream << splitSemicolon[0];
     stream >> year;
     stream.clear();
@@ -197,21 +197,19 @@ uint64_t setTimePCR(string &timeNow)
     timeStampN += dayInternal * 24 + hour;
     return timeStampN;
 }
-void setTimeNow(string &timeNow, uint64_t timeStampN) //ÉèÖÃµ±Ç°Ê±¼äº¯Êı
+void setTimeNow(string &timeNow, uint64_t timeStampN) //è®¾ç½®å½“å‰æ—¶é—´å‡½æ•°
 {
     int year, month, day, hour;
     string time;
-    //    if (timeStampN != 0) //Èç¹ûµ÷ÓÃµÄÊ±ºò´«ÈëÁËÊ±¼ä´Á£¬¾ÍÖ±½ÓÓÃÊ±¼ä´Á×ª»»
+    //    if (timeStampN != 0) //å¦‚æœè°ƒç”¨çš„æ—¶å€™ä¼ å…¥äº†æ—¶é—´æˆ³ï¼Œå°±ç›´æ¥ç”¨æ—¶é—´æˆ³è½¬æ¢
     //    {
     //        timeNow = TimeStamp_Convert(timeStampN);
     //        timeStampNow = timeStampN;
     //        return;
     //    }
 
-    string s;
     stringstream stream;
-    getline(cin, s);
-    vector<string> splitSemicolon = Util::split(s, "."); // ÒÔÓ¢ÎÄ·ÖºÅÎª·Ö¸ô·û½øĞĞ¶Ô×Ö·û´®½øĞĞ·Ö¸î
+    vector<string> splitSemicolon = Util::split(timeNow, "."); // ä»¥è‹±æ–‡åˆ†å·ä¸ºåˆ†éš”ç¬¦è¿›è¡Œå¯¹å­—ç¬¦ä¸²è¿›è¡Œåˆ†å‰²
     stream << splitSemicolon[0];
     stream >> year;
     stream.clear();
@@ -238,13 +236,13 @@ void setTimeNow(string &timeNow, uint64_t timeStampN) //ÉèÖÃµ±Ç°Ê±¼äº¯Êı
     dayInternal += day - 1;
     hour = hour - 8;
     timeStampN += dayInternal * 24 + hour;
-    timeNow = s;
-    cout << "\nÉèÖÃ³É¹¦£¡µ±Ç°Ê±¼äÎª£º" << timeNow << "£¬µ±Ç°Ê±¼ä´ÁÎª£¨µ¥Î»£ºĞ¡Ê±£©£º" << timeStampN;
+    timeStampNow = timeStampN;
+    cout << "\nè®¾ç½®æˆåŠŸï¼å½“å‰æ—¶é—´ä¸ºï¼š" << timeNow << "ï¼Œå½“å‰æ—¶é—´æˆ³ä¸ºï¼ˆå•ä½ï¼šå°æ—¶ï¼‰ï¼š" << timeStampN<<endl;
 }
 
 void classSearchPCR(Student *head)
 {
-    cout << "ÇëÊäÈë°à¼¶ºÅ£¨ÈçĞè·µ»ØÉÏÒ»¼¶ÇëÊäÈë¡®-1¡¯£©£º";
+    cout << "è¯·è¾“å…¥ç­çº§å·ï¼ˆå¦‚éœ€è¿”å›ä¸Šä¸€çº§è¯·è¾“å…¥â€˜-1â€™ï¼‰ï¼š";
     string classNum;
     cin >> classNum;
     if (classNum == "-1")
@@ -258,20 +256,20 @@ void classSearchPCR(Student *head)
             if (cnt->information.classnum == classNum)
             {
                 ++numOfClass;
-                if (timeNow.substr(0, 10) == cnt->information.PCR.date.substr(0, 10)) //Õâ¸öÅĞ¶ÏÌõ¼ş¸ù¾İÈÕÆÚÊäÈë¸ñÊ½¶ø¶¨
+                if (timeNow.substr(0, 10) == cnt->information.PCR.date.substr(0, 10)) //è¿™ä¸ªåˆ¤æ–­æ¡ä»¶æ ¹æ®æ—¥æœŸè¾“å…¥æ ¼å¼è€Œå®š
                 {
                     ++numOfDone;
                 }
             }
             cnt = cnt->next;
         }
-        cout << classNum << "°à" << timeNow.substr(0, 10) << "Ó¦×ö" << numOfClass << "ÈË£¬Êµ×ö" << numOfDone << "ÈË¡£" << endl;
+        cout << classNum << "ç­" << timeNow.substr(0, 10) << "åº”åš" << numOfClass << "äººï¼Œå®åš" << numOfDone << "äººã€‚" << endl;
     }
 }
 
 void dormSearchPCR(Student *head)
 {
-    cout << "ÇëÊäÈëËŞÉáÂ¥¶°ºÅ£¨¸ñÊ½£ºXÇøXX£©£¨ÈçĞè·µ»ØÉÏÒ»¼¶ÇëÊäÈë¡®-1¡¯£©£º";
+    cout << "è¯·è¾“å…¥å®¿èˆæ¥¼æ ‹å·ï¼ˆæ ¼å¼ï¼šXåŒºXXï¼‰ï¼ˆå¦‚éœ€è¿”å›ä¸Šä¸€çº§è¯·è¾“å…¥â€˜-1â€™ï¼‰ï¼š";
     string dormitory;
     cin >> dormitory;
     if (dormitory == "-1")
@@ -285,14 +283,14 @@ void dormSearchPCR(Student *head)
             if (cnt->information.address == dormitory)
             {
                 ++numOfDorm;
-                if (timeNow.substr(0, 10) == cnt->information.PCR.date.substr(0, 10)) //Õâ¸öÅĞ¶ÏÌõ¼ş¸ù¾İÈÕÆÚÊäÈë¸ñÊ½¶ø¶¨
+                if (timeNow.substr(0, 10) == cnt->information.PCR.date.substr(0, 10)) //è¿™ä¸ªåˆ¤æ–­æ¡ä»¶æ ¹æ®æ—¥æœŸè¾“å…¥æ ¼å¼è€Œå®š
                 {
                     ++numOfDone;
                 }
             }
             cnt = cnt->next;
         }
-        cout << dormitory << "ËŞÉáÂ¥" << timeNow.substr(0, 10) << "Ó¦×ö" << numOfDorm << "ÈË£¬Êµ×ö" << numOfDone << "ÈË¡£" << endl;
+        cout << dormitory << "å®¿èˆæ¥¼" << timeNow.substr(0, 10) << "åº”åš" << numOfDorm << "äººï¼Œå®åš" << numOfDone << "äººã€‚" << endl;
     }
 }
 
@@ -304,7 +302,7 @@ void SearchExpire(Student *head)
     {
         cin.clear();
         cnt = head->next;
-        cout << "ÇëÊäÈëÑ§ºÅ£¨ÈçĞè·µ»ØÉÏÒ»¼¶ÇëÊäÈë¡®-1¡¯£©£º";
+        cout << "è¯·è¾“å…¥å­¦å·ï¼ˆå¦‚éœ€è¿”å›ä¸Šä¸€çº§è¯·è¾“å…¥â€˜-1â€™ï¼‰ï¼š";
         cin >> id;
         if (id == "-1")
             break;
@@ -317,15 +315,15 @@ void SearchExpire(Student *head)
                 cnt = cnt->next;
             }
             if (cnt == NULL)
-                cout << "\nÑ§ºÅ²»´æÔÚ£¡ÇëÖØĞÂÊäÈë" << endl;
+                cout << "\nå­¦å·ä¸å­˜åœ¨ï¼è¯·é‡æ–°è¾“å…¥" << endl;
             else
             {
                 int duration = timeStampNow - cnt->information.PCR.timeStamp;
-                cout << "\nÄúÉÏ´ÎºËËáÊ±¼äÎª" << cnt->information.PCR.date << "£¬";
+                cout << "\næ‚¨ä¸Šæ¬¡æ ¸é…¸æ—¶é—´ä¸º" << cnt->information.PCR.date << "ï¼Œ";
                 if (duration > 72)
-                    cout << "ÄúµÄºËËáÒÑ¾­¹ıÆÚ£¡Çë¾¡¿ì½øĞĞºËËá¼ìÑé£¡";
+                    cout << "æ‚¨çš„æ ¸é…¸å·²ç»è¿‡æœŸï¼è¯·å°½å¿«è¿›è¡Œæ ¸é…¸æ£€éªŒï¼";
                 else
-                    cout << "¾àÄúºËËá¼ì²â±¨¸æµ½ÆÚ»¹ÓĞ" << 72 - duration << "Ğ¡Ê±£¡";
+                    cout << "è·æ‚¨æ ¸é…¸æ£€æµ‹æŠ¥å‘Šåˆ°æœŸè¿˜æœ‰" << 72 - duration << "å°æ—¶ï¼";
             }
         }
     }
@@ -336,9 +334,9 @@ void searchforstu(Student *head)
     string s;
     while (true)
     {
-        cout << "ÇëÊäÈëÑ§ºÅ£º";
+        cout << "è¯·è¾“å…¥å­¦å·ï¼š";
         cin >> s;
-        bool flag = false; //Æ¥ÅäÑ§ºÅ
+        bool flag = false; //åŒ¹é…å­¦å·
         Student *pp = head;
         for (int i = 0; i < NumofStudents; ++i)
         {
@@ -352,22 +350,45 @@ void searchforstu(Student *head)
                 break;
             }
         }
-        if (flag) //Èç¹ûÕÒµ½¸ÃÑ§ºÅÑ§Éú
+        if (flag) //å¦‚æœæ‰¾åˆ°è¯¥å­¦å·å­¦ç”Ÿ
         {
-            cout << "Ñ§Ôº£º" << pp->information.school << endl;
-            cout << "ĞÕÃû£º" << pp->information.name << endl;
-            cout << "Ñ§ºÅ£º" << pp->information.id << endl;
-            cout << "µç»°£º" << pp->information.telephone << endl;
-            cout << "ÇŞÊÒÂ¥¶°£º" << pp->information.address << endl;
-            cout << "°à¼¶ºÅ£º" << pp->information.classnum << endl;
-            cout << "ÌåÎÂ£º" << pp->information.temperature << endl;
-            cout << "ÒßÃç×¢ÉäÇé¿ö£º" << pp->information.vaccine << endl;
-            cout << "×î½üÒ»´ÎºËËá¼ì²âÈÕÆÚ£º" << pp->information.PCR.date << endl;
-            cout << "×î½üÒ»´ÎºËËá¼ì²â½á¹û£º" << pp->information.PCR.consequence << endl;
+            cout << "å­¦é™¢ï¼š" << pp->information.school << endl;
+            cout << "å§“åï¼š" << pp->information.name << endl;
+            cout << "å­¦å·ï¼š" << pp->information.id << endl;
+            cout << "ç”µè¯ï¼š" << pp->information.telephone << endl;
+            cout << "å¯å®¤æ¥¼æ ‹ï¼š" << pp->information.address << endl;
+            cout << "ç­çº§å·ï¼š" << pp->information.classnum << endl;
+            cout << "ä½“æ¸©ï¼š" << pp->information.temperature << endl;
+            cout << "ç–«è‹—æ³¨å°„æƒ…å†µï¼š" << pp->information.vaccine << endl;
+            cout << "æœ€è¿‘ä¸€æ¬¡æ ¸é…¸æ£€æµ‹æ—¥æœŸï¼š" << pp->information.PCR.date << endl;
+            cout << "æœ€è¿‘ä¸€æ¬¡æ ¸é…¸æ£€æµ‹ç»“æœï¼š" << pp->information.PCR.consequence << endl;
         }
         else
         {
-            cout << "²éÎŞ´ËÈË£¬ÇëÖØĞÂÊäÈë£¡" << endl;
+            cout << "æŸ¥æ— æ­¤äººï¼Œè¯·é‡æ–°è¾“å…¥ï¼" << endl;
         }
     }
+}
+
+void getTimeNow()
+{
+    SYSTEMTIME sys;
+    GetLocalTime(&sys);
+    string time,_year,_month,_day,_hour;
+    stringstream stream;
+    stream.clear();
+    stream<<sys.wYear;
+    stream>>_year;
+    stream.clear();
+    stream<<sys.wMonth;
+    stream>>_month;
+    stream.clear();
+    stream<<sys.wDay;
+    stream>>_day;
+    stream.clear();
+    stream<<sys.wHour;
+    stream>>_hour;
+    time = _year+"."+_month+"."+_day+"."+_hour;
+    ::timeNow = time;
+    setTimeNow(timeNow,0);
 }
