@@ -1,13 +1,16 @@
 #include "CM.h"
-
+#include"help.cpp"
+#include"inputinformation.cpp"
+#include"SubmitInformation.cpp"
+#include"inandoutmanagement.cpp"
 extern const Student *headofstu;
 extern int NumofStudents;
-extern string timeNow;   //ƒø«∞ ±º‰
-extern int timeStampNow; //µ±«∞µƒ ±º‰¥¡
+extern string timeNow;   //ÁõÆÂâçÊó∂Èó¥
+extern int timeStampNow; //ÂΩìÂâçÁöÑÊó∂Èó¥Êà≥
 int main()
 {
-    cout << "ΩÃ ¶µ«¬º«Î∞¥ 1£ª—ß…˙µ«¬º«Î∞¥ 2" << endl;
-    cout << "«Î ‰»Î£∫";
+    cout << "ÊïôÂ∏àÁôªÂΩïËØ∑Êåâ 1ÔºõÂ≠¶ÁîüÁôªÂΩïËØ∑Êåâ 2" << endl;
+    cout << "ËØ∑ËæìÂÖ•Ôºö";
     int r;
     cin >> r;
     if (r == 1)
@@ -19,101 +22,101 @@ int main()
             cin >> n;
             switch (n)
             {
-            case 1: //–≈œ¢µº»Îƒ£øÈ
-            {
-                bool flag = false;
-                while (true)
+                case 1: //‰ø°ÊÅØÂØºÂÖ•Ê®°Âùó
                 {
-                    helpofinput();
-                    cin >> n;
-                    switch (n)
+                    bool flag = false;
+                    while (true)
                     {
-                    case 1:
-                        clean();
-                        helpofstudentinput();
-                        inputinformation();
-                        clean();
-                        break;
-                    case 2:
-                        clean();
-                        helpofpcrinput();
-                        inputPCR();
-                        clean();
-                        break;
-                    case 3:
-                        clean();
-                        helpofdorminput();
-                        inputinformationofdorm();
-                        clean();
-                        break;
-                    case 4:
-                        flag = true;
-                        break;
-                    default:
-                        cout << "«Î«ÛŒﬁ–ß£¨«Î÷ÿ–¬ ‰»Î£∫";
-                        break;
+                        helpofinput();
+                        cin >> n;
+                        switch (n)
+                        {
+                            case 1:
+                                clean();
+                                helpofstudentinput();
+                                inputinformation();
+                                clean();
+                                break;
+                            case 2:
+                                clean();
+                                helpofpcrinput();
+                                inputPCR();
+                                clean();
+                                break;
+                            case 3:
+                                clean();
+                                helpofdorminput();
+                                inputinformationofdorm();
+                                clean();
+                                break;
+                            case 4:
+                                flag = true;
+                                break;
+                            default:
+                                cout << "ËØ∑Ê±ÇÊó†ÊïàÔºåËØ∑ÈáçÊñ∞ËæìÂÖ•Ôºö";
+                                break;
+                        }
+                        if (flag)
+                            break;
                     }
-                    if (flag)
-                        break;
+                    break;
                 }
-                break;
-            }
-            case 2: //–≈œ¢…œ±®π‹¿Ìƒ£øÈ
-            {
-                bool flag = false;
-                while (true)
+                case 2: //‰ø°ÊÅØ‰∏äÊä•ÁÆ°ÁêÜÊ®°Âùó
                 {
-                    helpofsubmit();
-                    cin >> n;
-                    switch (n)
+                    bool flag = false;
+                    while (true)
                     {
-                    case 1:
-                        clean();
-                        searchforstu((Student *)headofstu);
-                        clean();
-                        break;
-                    case 2:
-                        clean();
-                        classSearchPCR((Student *)headofstu);
-                        clean();
-                        break;
-                    case 3:
-                        clean();
-                        dormSearchPCR((Student *)headofstu);
-                        clean();
-                        break;
-                    case 4:
-                        clean();
-                        SearchExpire((Student *)headofstu);
-                        clean();
-                        break;
-                    case 5:
-                        flag = true;
-                        break;
-                    default:
-                        cout << "«Î«ÛŒﬁ–ß£¨«Î÷ÿ–¬ ‰»Î£∫";
-                        break;
+                        helpofsubmit();
+                        cin >> n;
+                        switch (n)
+                        {
+                            case 1:
+                                clean();
+                                searchforstu((Student *)headofstu);
+                                clean();
+                                break;
+                            case 2:
+                                clean();
+                                classSearchPCR((Student *)headofstu);
+                                clean();
+                                break;
+                            case 3:
+                                clean();
+                                dormSearchPCR((Student *)headofstu);
+                                clean();
+                                break;
+                            case 4:
+                                clean();
+                                SearchExpire((Student *)headofstu);
+                                clean();
+                                break;
+                            case 5:
+                                flag = true;
+                                break;
+                            default:
+                                cout << "ËØ∑Ê±ÇÊó†ÊïàÔºåËØ∑ÈáçÊñ∞ËæìÂÖ•Ôºö";
+                                break;
+                        }
+                        if (flag)
+                            break;
                     }
-                    if (flag)
-                        break;
                 }
-            }
-            break;
-            case 3: //Ω¯≥ˆ–£√≈π‹¿Ìƒ£øÈ
-                cout << "º¥Ω´Œ™ƒ˙œ‘ æ“—Ã·Ωª…Í«Î—ß…˙µƒ–≈œ¢£∫" << endl;
-                inandout((Student *)headofstu);
-                break;
-            case 4: //
-                /* code */
-                break;
-            case 5: // ±º‰…Ë÷√ƒ£øÈ
-                setTimeNow();
-                cout << "µ±«∞ ±º‰¥¡£®µ•Œª£∫–° ±£©Œ™£∫" << timeStampNow << endl
-                     << "µ±«∞ ±º‰Œ™£∫" << timeNow << endl;
-                break;
-            default:
-                cout << "«Î÷ÿ–¬ ‰»Î£°";
-                break;
+                    break;
+                case 3: //ËøõÂá∫Ê†°Èó®ÁÆ°ÁêÜÊ®°Âùó
+                    cout << "Âç≥Â∞Ü‰∏∫ÊÇ®ÊòæÁ§∫Â∑≤Êèê‰∫§Áî≥ËØ∑Â≠¶ÁîüÁöÑ‰ø°ÊÅØÔºö" << endl;
+                    inandout((Student *)headofstu);
+                    break;
+                case 4: //
+                    /* code */
+                    break;
+                case 5: //Êó∂Èó¥ËÆæÁΩÆÊ®°Âùó
+                    getTimeNow();
+//                    cout << "ÂΩìÂâçÊó∂Èó¥Êà≥ÔºàÂçï‰ΩçÔºöÂ∞èÊó∂Ôºâ‰∏∫Ôºö" << timeStampNow << endl
+//                         << "ÂΩìÂâçÊó∂Èó¥‰∏∫Ôºö" << timeNow << endl;
+                    break;
+                default:
+                    cout << "ËØ∑ÈáçÊñ∞ËæìÂÖ•ÔºÅ";
+                    break;
             }
         }
     }
@@ -122,9 +125,9 @@ int main()
         string s;
         while (true)
         {
-            cout << "«Î ‰»Î—ß∫≈£∫";
+            cout << "ËØ∑ËæìÂÖ•Â≠¶Âè∑Ôºö";
             cin >> s;
-            bool flag = false; //∆•≈‰—ß∫≈
+            bool flag = false; //ÂåπÈÖçÂ≠¶Âè∑
             Student *pp = (Student *)headofstu;
             for (int i = 0; i < NumofStudents; ++i)
             {
@@ -138,7 +141,7 @@ int main()
                     break;
                 }
             }
-            if (flag) //»Áπ˚’“µΩ∏√—ß∫≈—ß…˙
+            if (flag) //Â¶ÇÊûúÊâæÂà∞ËØ•Â≠¶Âè∑Â≠¶Áîü
             {
                 while (true)
                 {
@@ -148,19 +151,19 @@ int main()
                     cin >> n;
                     switch (n)
                     {
-                    case 1: //—ß…˙∏ˆ»À–≈œ¢≤È—Øƒ£øÈ
-                        clean();
-                        searchforper(pp);
-                        flag1 = true;
-                        break;
-                    case 2:
-                        clean();
-                        applyforinandout(pp); //—ß…˙Ω¯≥ˆ–°…Í«Îƒ£øÈ
-                        flag1 = true;
-                        break;
-                    default:
-                        cout << "«Î÷ÿ–¬ ‰»Î£°";
-                        break;
+                        case 1: //Â≠¶Áîü‰∏™‰∫∫‰ø°ÊÅØÊü•ËØ¢Ê®°Âùó
+                            clean();
+                            searchforper(pp);
+                            flag1 = true;
+                            break;
+                        case 2:
+                            clean();
+                            applyforinandout(pp); //Â≠¶ÁîüËøõÂá∫Â∞èÁî≥ËØ∑Ê®°Âùó
+                            flag1 = true;
+                            break;
+                        default:
+                            cout << "ËØ∑ÈáçÊñ∞ËæìÂÖ•ÔºÅ";
+                            break;
                     }
                     if (flag1)
                         break;
@@ -168,7 +171,7 @@ int main()
             }
             else
             {
-                cout << "≤ÈŒﬁ¥À»À£¨«Î÷ÿ–¬ ‰»Î£°" << endl;
+                cout << "Êü•Êó†Ê≠§‰∫∫ÔºåËØ∑ÈáçÊñ∞ËæìÂÖ•ÔºÅ" << endl;
             }
         }
     }
