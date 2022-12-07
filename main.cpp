@@ -110,11 +110,6 @@ int main()
                 case 4: //
                     /* code */
                     break;
-                case 5: //时间设置模块
-                    getTimeNow();
-//                    cout << "当前时间戳（单位：小时）为：" << timeStampNow << endl
-//                         << "当前时间为：" << timeNow << endl;
-                    break;
                 default:
                     cout << "请重新输入！";
                     break;
